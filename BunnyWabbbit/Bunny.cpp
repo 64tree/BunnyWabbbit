@@ -3,29 +3,18 @@
 #include <string>
 //using std::string;
 
-//creates the car object
+//creates the bunny object
 bunny::bunny(string colour, int age, bunny* nextBunny)
 {
 	if ((colour != "spotted" )|( colour != "black") |(colour != "brown") |(colour != "white"))
 	{
-
 		this->colour = colour;
 	}
 
 	this->age = age;
 	
-	if (getSex() == 1) 
-	{
-		sex = "male";
-	}
-	else 
-	{
-		sex = "female"; 
-	}
-	int index;
-	index = getName();
-	name = "jack";
-		//BUNNY_NAMES[index];
+	sex = getSex();
+	name = getName();
 
 	setNext(nextBunny);
 
@@ -41,14 +30,27 @@ bunny* bunny::getNext()
 	return this->nextListItem;
 }
 
-bool bunny::getSex()
+/*generates the sex of the bunny */
+string bunny::getSex()
 {
-	return ( rand() % 1);
+	string sex;
+	if ((rand() % 1 )== 1)
+	{
+		sex = "male";
+	}
+	else
+	{
+		sex = "female";
+	}
+	return (sex);
 
 }
 
-int bunny::getName()
+/*returns a random int from 10 possiblites*/
+string bunny::getName()
 {
-	return (rand() % 9);
+	int index;
+	index = (rand() % 9);
+	return (BUNNY_NAMES[index]);
 
 }
